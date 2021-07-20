@@ -20,6 +20,11 @@ app.get('/:word/echo', (req, res) => {
 	res.json({echo: req.params.word});
 })
 
+// 10.) Get Query Parameter Input from the Client
+app.get('/name', (req, res) => {
+	res.json({name: '?first=' + req.params.first + '&last=' + req.params.last});
+});
+
 // 1.) Meet the Node console
 console.log('Hello World');
 
@@ -53,3 +58,5 @@ app.get('/json', (req, res) => {{
 	res.json({message: "Hello json"});
 }});
 
+
+module.exports = app;
