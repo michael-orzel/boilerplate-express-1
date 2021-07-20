@@ -7,6 +7,14 @@ app.use((req, res, next) => {
 	next();
 })
 
+// 8.) Chain Middleware to Create a Time Server
+app.get('/now', (req, res, next) => {
+	req.time = new Date().toString();
+	next();
+}, (req, res) => {
+	res.send({time: req.time});
+});
+
 // 1.) Meet the Node console
 console.log('Hello World');
 
