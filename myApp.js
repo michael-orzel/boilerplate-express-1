@@ -10,29 +10,29 @@ console.log('Hello World');
 }); */
 
 // 3.) Serve an HTML File
-const indexView = __dirname + '/views/index.html';
-app.get('/', (req, res) => {
-	res.sendFile(indexView);
-});
+//const indexView = __dirname + '/views/index.html';
+/* app.get('/', (req, res) => {
+	res.sendFile(__dirname + '/views/index.html');
+}); */
 
 // 4.) Serve Static Assets
+app.use('/public', express.static(__dirname + '/public'));
+app.get('/', (req, res) => {
+	res.sendFile(__dirname + '/views/index.html');
+});
 
+// 5.) Serve JSON on a Specific Route
+/* app.get('/json', (req, res) => {{
+	res.json({message: "Hello json"});
+}}); */
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// 6.) Use the .env File
+app.get('/json', (req, res) => {{
+	if(process.env.MESSAGE_STYLE === 'uppercase') {
+		res.json({message: "HELLO JSON"});
+	}
+	res.json({message: "Hello json"});
+}});
 
 
 
