@@ -15,6 +15,11 @@ app.get('/now', (req, res, next) => {
 	res.send({time: req.time});
 });
 
+// 9.) Get Route Parameter Input from the Client
+app.get('/:word/echo', (req, res) => {
+	res.json({echo: req.params.word});
+})
+
 // 1.) Meet the Node console
 console.log('Hello World');
 
@@ -48,13 +53,3 @@ app.get('/json', (req, res) => {{
 	res.json({message: "Hello json"});
 }});
 
-
-
-
-
-
-
-
-
-
- module.exports = app;
