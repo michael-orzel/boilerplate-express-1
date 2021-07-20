@@ -22,7 +22,10 @@ app.get('/:word/echo', (req, res) => {
 
 // 10.) Get Query Parameter Input from the Client
 app.get('/name', (req, res) => {
-	res.json({name: '?first=' + req.params.first + '&last=' + req.params.last});
+	let { first, last } = req.query;
+	res.json({
+		name: `${first} ${last}`
+	});
 });
 
 // 1.) Meet the Node console
