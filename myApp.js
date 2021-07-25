@@ -1,11 +1,15 @@
-var express = require('express');
-var app = express();
+const express = require('express');
+const bodyParser = require('body-parser');
+const app = express();
 
 // 7) Implement a Root-Level Request Logger Middleware
 app.use((req, res, next) => {
 	console.log(req.method + ' ' + req.path + ' - ' + req.ip);
 	next();
 })
+
+// 11.) Use body-parser to Parse POST Requests
+app.use(bodyParser.urlencoded({extended: false}));
 
 // 8.) Chain Middleware to Create a Time Server
 app.get('/now', (req, res, next) => {
