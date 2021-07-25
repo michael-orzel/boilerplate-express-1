@@ -11,6 +11,14 @@ app.use((req, res, next) => {
 // 11.) Use body-parser to Parse POST Requests
 app.use(bodyParser.urlencoded({extended: false}));
 
+// 12.) Get data from POST Requests
+app.post('/name', (req, res) => {
+	let { first, last } = req.body;
+	res.json({
+		name: `${first} ${last}`
+	});
+})
+
 // 8.) Chain Middleware to Create a Time Server
 app.get('/now', (req, res, next) => {
 	req.time = new Date().toString();
